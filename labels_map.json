@@ -1,0 +1,12 @@
+{
+ "plastic": ["plastic","pet","hdpe","straw","wrapper","bag","bags","cap","lid","polythene","pouch","sachet"],
+ "paper": ["paper","cardboard","carton","newspaper","magazine","tissue","tetra","cup sleeve"],
+ "glass": ["glass","glass bottle","glass jar","brown glass bottle","green glass bottle","white glass bottle","jar","wine bottle","beer bottle"],
+ "metal": ["metal","aluminium","aluminum","foil","steel","iron","tin","scrap"],
+ "organic": ["organic","biological","bio","food","compost","leftover","peel","vegetable","fruit","kitchen waste","garden","vegetation"],
+ "ewaste": ["electronic","electronics","e-waste","ewaste","wire","cable","earphone","headphone","pcb","remote","charger","mobile","smartphone","keyboard","laptop","mouse","computer","tablet"],
+ "battery": ["battery","batteries","cell","powerbank"],
+ "textile": ["clothes","clothing","shoe","shoes","fabric","textile","cloth","garment"],
+ "hazardous": ["hazardous","chemical","medicine","medical","bulb","tube light","paint","aerosol","syringe","sanitary"],
+ "styrofoam": ["trash","garbage","residual","miscellaneous","other","cigarette","thermocol","foam","styrofoam","chips packet","diaper"]
+}
