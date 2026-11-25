@@ -51,3 +51,10 @@ Check the live service at `/api/health`. A `camera:false` result is expected unt
 The source folder contains the OpenCV ONNX models, Arm64 offline Python wheels, speech assets, UI, setup scripts, and reports. The Llama `.pte`, tokenizer, and ExecuTorch `llama_main` binary are not included; they are installed separately on the KV260 and are not tracked in this repository. The checked-in launch script documents their board paths. The active 30-class detector's ONNX metadata declares the Ultralytics AGPL-3.0 license and records a Roboflow training-config path, but the exact dataset version and rights for the extra `plastic straw` class are not confirmed. Review `MODEL_PROVENANCE.md` and `THIRD_PARTY_NOTICES.md` before redistributing the model. The required demo video is also not present yet; use `DEMO_SCRIPT.md` to record it.
 
 
+
+
+## Final project report
+
+- [PDF report](docs/EcoSort_Final_Project_Report.pdf)
+- [Editable Word report](docs/EcoSort_Final_Project_Report.docx)
+

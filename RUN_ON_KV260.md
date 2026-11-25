@@ -84,3 +84,8 @@ The active detector is `models/ecosort_yolov8n_30class_v1.onnx`, selected by `ru
 ## Git and model files
 
 The `models/` folder is part of the repository and is not ignored. The Llama PTE, tokenizer, and `llama_main` remain external board prerequisites. The active 30-class ONNX metadata declares Ultralytics AGPL-3.0, but its exact Roboflow training export and the added `plastic straw` class provenance are not verified; review [`MODEL_PROVENANCE.md`](MODEL_PROVENANCE.md) and [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) before redistribution. The demonstration video is a separate challenge deliverable; see [`DEMO_SCRIPT.md`](DEMO_SCRIPT.md).
+
+## PL deployment scope
+
+The checked-in DPU path targets the MobileNet material classifier (models/waste.xmodel) through PYNQ-DPU. The active 30-class YOLO detector continues to use OpenCV DNN on the Arm CPU. Running YOLO on PL requires a DPU-compatible export, matching KV260 DPU bitstream/runtime, and an inference backend integrated and validated on the board. Do not treat the current CPU detector path as FPGA-accelerated.
+
