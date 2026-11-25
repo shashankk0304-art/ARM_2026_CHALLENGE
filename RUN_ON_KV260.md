@@ -65,17 +65,19 @@ nohup bash run.sh >>app.log 2>&1 </dev/null &
 
 Watch logs with `tail -f app.log`. Don’t launch a second copy while port 8000 is occupied.
 
-## 5. Open the site and test
+## 5. Open the site from your laptop — use this one browser address
 
-For photo upload, open `http://<KV260_IP>:8000/`. Check service readiness at `http://<KV260_IP>:8000/api/health` or with the curl command above.
-
-For laptop camera/microphone access, create an SSH local forward from a Windows PowerShell window:
+The EcoSort server runs on the KV260 at port `8000`. From a laptop, use an SSH tunnel so the browser gets a secure localhost origin for camera and microphone APIs. Start this in Windows PowerShell (replace `<KV260_IP>` with the board's current address):
 
 ```powershell
 ssh -N -L 8001:127.0.0.1:8000 ubuntu@<KV260_IP>
 ```
 
-Keep that tunnel window open and visit `http://localhost:8001/` in the browser. Grant camera/microphone access. A health response with `camera:false` means no USB camera was found on the KV260; it does not report the laptop camera. Live laptop frames are sent to the board for OpenCV detection.
+Keep the PowerShell tunnel window open. In the laptop browser, use **only** `http://localhost:8001/` for the project; this same page handles photo upload, laptop live camera, and microphone input. Allow camera and microphone access when the browser asks. Do not browse to `http://<KV260_IP>:8000/` on the laptop when using its camera or microphone: a plain-HTTP IP address is not a secure browser origin. Port `8000` is the KV260-side service port forwarded internally by the tunnel; it is not a second website to use.
+
+If SSH reports `channel ... open failed: connect failed: Connection refused`, the tunnel reached the board but the EcoSort app is not listening on board port `8000`. In another PuTTY shell, start the app with `bash run.sh` from `$HOME/ecosort` and keep it running. To check the app on the board, run `curl http://127.0.0.1:8000/api/health`. From the laptop, check the same service through the tunnel at `http://localhost:8001/api/health`.
+
+A health response with `camera:false` means no USB camera was found on the KV260; it does not report the laptop camera. Live laptop frames are captured by the browser and sent to the board for OpenCV detection.
 
 The active detector is `models/ecosort_yolov8n_30class_v1.onnx`, selected by `run.sh` with `YOLO_FORMAT=ultralytics`. Its labels are in `models/ecosort_yolov8n_30class_v1_labels.txt`. The iAny material classifier (`models/waste.onnx`) and WasteWise fallback are separate classifier stages. Current inference runs on the Arm CPU/PS; PL acceleration is not configured.
 
